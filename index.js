@@ -9,4 +9,3 @@ consign()
   .then("./routes")
   .then("./lib/boot.js")
   .into(app);
-
