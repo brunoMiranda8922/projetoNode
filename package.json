@@ -15,7 +15,8 @@
     "consign": "^0.1.6",
     "express": "^4.16.4",
     "nodemon": "^1.18.4",
-    "sequelize": "^4.41.0"
+    "sequelize": "^4.41.0",
+    "sqlite3": "^4.0.3"
   },
   "devDependencies": {
     "eslint": "^5.7.0",
