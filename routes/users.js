@@ -7,8 +7,8 @@ module.exports = app => {
       Users.findAll({})
         .then(result =>  res.send(result))
         .catch(error => {
-          res.status(412).send({msg: error.message})
-      });
+          res.status(412).send({msg: error.message});
+        });
     })
     .post((req, res) => {
       Users.create(req.body)
@@ -20,18 +20,30 @@ module.exports = app => {
   app.route('/users/:id')
     .get((req, res) => {
       Users.findById(req.params.id, {
-        attributes: ['id', 'name', 'email']
+        attributes: ['id', 'name', 'email', 'created_at']
       })
-      .then(result => res.json(result))
-      .catch(error => {
-        res.status(412).json({msg: error.message});
-      });
+        .then(result => {
+          if (result) {
+            res.send(result);
+          } else {
+            res.status(404).send({'user': 'not found'});
+          }
+        })
+        .catch(error => {
+          res.status(412).json({msg: error.message});
+        });
     })
     .delete((req, res) => {
       Users.destroy({where: {id: req.params.id} })
-        .then(result => res.sendStatus(204))
+        .then(result => {
+          if (result) {
+            res.sendStatus(204);
+          } else {
+            res.status(404).send({'user': 'not found'});
+          }
+        })
         .catch(error => {
           res.status(412).json({msg: error.message});
-      });
+        });
     });
-}
+};

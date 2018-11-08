@@ -26,11 +26,11 @@ module.exports = app => {
           if (result) {
             res.json(result);
           } else {
-            res.sendStatus(404);
+            res.status(404).send({'tasks' : 'not found'});
           }
         })
         .catch(error => {
-          res.status(412).json({msg: error.message})
+          res.status(412).json({msg: error.message});
         });
     })
     .put((req, res) => {
@@ -48,11 +48,11 @@ module.exports = app => {
           if (result) {
             res.sendStatus(204);
           } else {
-            res.sendStatus(404);
+            res.status(404).send({'tasks' : 'not found'});
           }
         })
         .catch(error => {
-          res.status(412).json({msg: error.message})
+          res.status(412).json({msg: error.message});
         });
     });
 };
