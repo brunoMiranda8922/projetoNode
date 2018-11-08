@@ -1,2 +1,4 @@
 .babelrc
 node_modules
+node.sqlite
+node_modules/body-parser/package.json
