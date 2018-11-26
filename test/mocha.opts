@@ -1,0 +1,4 @@
+--require test/helpers
+--reporter spec
+--compilers js:nodemon
+--slow 4000
